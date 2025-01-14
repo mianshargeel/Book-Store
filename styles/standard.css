@@ -1,0 +1,39 @@
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "Economica", serif;
+}
+html{
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+body{
+  background-color: #1a1a2e;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+header{
+  background-color: #0a222c;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0 0 0 25px;
+}
+code{
+  color: #ab4b54;
+  font-weight: bolder;
+}
+main{
+  flex: 1;
+}
+footer{
+  background-color: #0a222c;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 25px;
+}
