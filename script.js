@@ -13,18 +13,24 @@ function renderBooks() {
      <h2>${bookElements.price} €</h2>
      <span><strong id='likesNum${index}'> ${bookElements.likes} </strong>
      <img id="likedImg${index}" src="./assets/img/whiteLike.png" alt="Like" onclick="isBookLiked(${index})" /> </span>
-    </div>
+     </div>
     <div class='details'>  <p>Author</p> <p>:${bookElements.author}</p> </div>
     <div class='details'> <p>Erscheiningungsjahr</p> <p>:${bookElements.publishedYear}</p> </div>
     <div class='details'> <p>Genre</p> <p>:${bookElements.genre}</p> </div>
-
     <div class='commentArea'> <strong>Comments:</strong> ${commentBox(index)} </div>
     <div class='addComment'> <input type="text" id='userComment${index}' placeholder='enter your commnet'/>
     <button class='inputBtn' onclick="addComments(${index})"></button></div>
-    
     `;
     contentIdRef.appendChild(bookCard);
   });
+}
+
+function commentBox(index) {
+  let commentHtml = '';
+  books[index].comments.forEach(ele => {
+    commentHtml += `<div class='coment-box'><span>${ele.name}:</span> <span> ${ele.comment}</span></div> `;
+  });
+  return commentHtml;
 }
 
 function addComments(index) {
@@ -33,22 +39,11 @@ function addComments(index) {
 
   if (userValue) {
     books[index].comments.push({ name: 'User', comment: userValue });
-    //comments contains array of object with with name&comment keys
     userComRef.value = '';
     renderBooks(); //updating the state of Card
   } else {
     alert("Please add your Comment");
   }
-}
-
-function commentBox(index) {
-  let commentHtml = '';
-  books[index].comments.forEach(ele => {
-    commentHtml += `<div class='coment-box'><span>${ele.name}:</span>    
-        <span> ${ele.comment}</span></div>
-        `;
-  });
-  return commentHtml;
 }
 
 function isBookLiked(index) {

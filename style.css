@@ -6,7 +6,6 @@
   padding: 20px;
   overflow: hidden;
 }
-
 .book-card{
   background-color: #2a2a3d;
   border-radius: 10px;
@@ -66,7 +65,6 @@
   flex-direction: row;
   flex-wrap: wrap;
   overflow-x: hidden;
-
 }
 .coment-box span{
   display: flex;
