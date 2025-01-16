@@ -1,26 +1,22 @@
 function renderBooks() {
   let contentIdRef = document.getElementById('contentId');
   contentIdRef.innerHTML = '';
-  
   books.forEach((bookElements, index) => {
     let bookCard = document.createElement('div');
     bookCard.className = 'book-card';
-    
     bookCard.innerHTML += `
      <div class='card-heading'><h2>${bookElements.name}</h2></div>
      <div><img class='mainImg' src="./assets/img/book.jpeg" alt="" /></div>
-     <div class='priceAndLikes'>
-     <h2>${bookElements.price} €</h2>
+     <div class='priceAndLikes'> <h2>${bookElements.price} €</h2>
      <span><strong id='likesNum${index}'> ${bookElements.likes} </strong>
      <img id="likedImg${index}" src="./assets/img/whiteLike.png" alt="Like" onclick="isBookLiked(${index})" /> </span>
      </div>
-    <div class='details'>  <p>Author</p> <p>:${bookElements.author}</p> </div>
-    <div class='details'> <p>Erscheiningungsjahr</p> <p>:${bookElements.publishedYear}</p> </div>
-    <div class='details'> <p>Genre</p> <p>:${bookElements.genre}</p> </div>
+    <div class='details'>  <p>Author:</p> <p>${bookElements.author}</p> </div>
+    <div class='details'> <p>Erscheiningungsjahr:</p> <p>${bookElements.publishedYear}</p> </div>
+    <div class='details'> <p>Genre:</p> <p>${bookElements.genre}</p> </div>
     <div class='commentArea'> <strong>Comments:</strong> ${commentBox(index)} </div>
     <div class='addComment'> <input type="text" id='userComment${index}' placeholder='enter your commnet'/>
-    <button class='inputBtn' onclick="addComments(${index})"></button></div>
-    `;
+    <button class='inputBtn' onclick="addComments(${index})"></button></div> `;
     contentIdRef.appendChild(bookCard);
   });
 }
@@ -40,7 +36,7 @@ function addComments(index) {
   if (userValue) {
     books[index].comments.push({ name: 'User', comment: userValue });
     userComRef.value = '';
-    renderBooks(); //updating the state of Card
+    renderBooks(); 
   } else {
     alert("Please add your Comment");
   }
