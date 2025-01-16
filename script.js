@@ -1,7 +1,9 @@
-let contentIdRef = document.getElementById('contentId');
-contentIdRef.innerHTML = '';
+
 
 function renderBooks() {
+  let contentIdRef = document.getElementById('contentId');
+  contentIdRef.innerHTML = '';
+  
   books.forEach((bookElements, index) => {
     let bookCard = document.createElement('div');
     bookCard.className = 'book-card';
@@ -9,8 +11,7 @@ function renderBooks() {
      <div class='card-heading'><h2>${bookElements.name}</h2></div>
      <div><img class='mainImg' src="./assets/img/book.jpeg" alt="" /></div>
      <div class='priceAndLikes'> <h2>${bookElements.price} €</h2>
-     <span><strong id='likesNum${index}'>${bookElements.likes}</strong></span>
-     </div>
+     <span><strong id='likesNum${index}'>${bookElements.likes}</strong></span></div>
     <div class='details'>  <p>Author:</p> <p>${bookElements.author}</p> </div>
     <div class='details'> <p>Erscheiningungsjahr:</p> <p>${bookElements.publishedYear}</p> </div>
     <div class='details'> <p>Genre:</p> <p>${bookElements.genre}</p> </div>
@@ -27,7 +28,7 @@ function renderBooks() {
 function commentBox(index) {
   let commentHtml = '';
   books[index].comments.forEach(ele => {
-    commentHtml += `<div class='coment-box'><span>${ele.name}:</span> <span> ${ele.comment}</span></div> `;
+    commentHtml += `<div class='coment-box'><span>${ele.name}:</span> <span> ${ele.comment}</span></div>`;
   });
   return commentHtml;
 }
