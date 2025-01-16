@@ -3,7 +3,7 @@ let books = [
     "name": "Die Geheimnisse des Ozeans",
     "author": "Clara Meer",
     "likes": 1250,
-    "liked": false,
+    "liked": true,
     "price": 19.99,
     "publishedYear": 2018, 
     "genre": "Fantasy",

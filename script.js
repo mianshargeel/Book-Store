@@ -1,6 +1,7 @@
+let contentIdRef = document.getElementById('contentId');
+contentIdRef.innerHTML = '';
+
 function renderBooks() {
-  let contentIdRef = document.getElementById('contentId');
-  contentIdRef.innerHTML = '';
   books.forEach((bookElements, index) => {
     let bookCard = document.createElement('div');
     bookCard.className = 'book-card';
@@ -8,8 +9,7 @@ function renderBooks() {
      <div class='card-heading'><h2>${bookElements.name}</h2></div>
      <div><img class='mainImg' src="./assets/img/book.jpeg" alt="" /></div>
      <div class='priceAndLikes'> <h2>${bookElements.price} €</h2>
-     <span><strong id='likesNum${index}'> ${bookElements.likes} </strong>
-     <img id="likedImg${index}" src="./assets/img/whiteLike.png" alt="Like" onclick="isBookLiked(${index})" /> </span>
+     <span><strong id='likesNum${index}'>${bookElements.likes}</strong></span>
      </div>
     <div class='details'>  <p>Author:</p> <p>${bookElements.author}</p> </div>
     <div class='details'> <p>Erscheiningungsjahr:</p> <p>${bookElements.publishedYear}</p> </div>
@@ -17,6 +17,9 @@ function renderBooks() {
     <div class='commentArea'> <strong>Comments:</strong> ${commentBox(index)} </div>
     <div class='addComment'> <input type="text" id='userComment${index}' placeholder='enter your commnet'/>
     <button class='inputBtn' onclick="addComments(${index})"></button></div> `;
+    let likeButton = createLikeButton(index);
+    let likesContainer = bookCard.querySelector('.priceAndLikes span');
+    likesContainer.appendChild(likeButton);
     contentIdRef.appendChild(bookCard);
   });
 }
@@ -42,74 +45,22 @@ function addComments(index) {
   }
 }
 
-function isBookLiked(index) {
-  let likesNumRef = document.getElementById(`likesNum${index}`);
-  let likedImgRef = document.getElementById(`likedImg${index}`);
+function createLikeButton(index) {
+  let likeButton = document.createElement('img');
 
-  books[index].liked = !books[index].liked;
-  if (books[index].liked) {
-    likedImgRef.src = `./assets/img/redLike.png`; 
-    books[index].likes += 1;
-  } else {
-    likedImgRef.src = `./assets/img/whiteLike.png`;
-    books[index].likes -= 1;
-  }
-  likesNumRef.innerHTML = books[index].likes;
+  likeButton.src = books[index].liked ? `./assets/img/redLike.png` : `./assets/img/whiteLike.png`;
+  likeButton.onclick = () => isBookLiked(index);
+  likeButton.style.cursor = 'pointer';
+
+  return likeButton;
 }
 
+function isBookLiked(index) {
+  let likesNumRef = document.getElementById(`likesNum${index}`);
+  books[index].liked = !books[index].liked;
+  books[index].likes += books[index].liked ? 1 : -1;
+  likesNumRef.innerText = books[index].likes;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  let likeButtonRef = likesNumRef.nextElementSibling; //img
+  likeButtonRef.src = books[index].liked ? `./assets/img/redLike.png` : `./assets/img/whiteLike.png`;
+}
