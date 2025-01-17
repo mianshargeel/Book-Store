@@ -16,7 +16,7 @@ function renderBooks() {
     <div class='details'> <p>Erscheiningungsjahr:</p> <p>${bookElements.publishedYear}</p> </div>
     <div class='details'> <p>Genre:</p> <p>${bookElements.genre}</p> </div>
     <div class='commentArea'> <strong>Comments:</strong> ${commentBox(index)} </div>
-    <div class='addComment'> <input type="text" id='userComment${index}' placeholder='enter your commnet'/>
+    <div class='addComment'> <input  type="text" id='userComment${index}' placeholder='enter your commnet'/>
     <button class='inputBtn' onclick="addComments(${index})"></button></div> `;
     let likeButton = createLikeButton(index);
     let likesContainer = bookCard.querySelector('.priceAndLikes span');

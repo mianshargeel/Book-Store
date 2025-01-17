@@ -16,7 +16,6 @@
   display:flex;
   flex-direction: column;
   gap: 12px;
-  height: 100vh;
   justify-content: space-between;
   overflow: hidden; 
   position: relative;
@@ -62,15 +61,21 @@
 }
 .commentArea{
   display: flex;
-  flex-direction: row;
+  /* flex-direction: column; */
   flex-wrap: wrap;
   overflow-x: hidden;
+}
+.coment-box{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .coment-box span{
   display: flex;
   flex-direction: column;
   gap: 5px;
-  font-size: 16px;
+  font-size: 14px;
+  font-style: italic;
 }
 .addComment input{
   width: 100%;
@@ -80,6 +85,7 @@
   font-size: 18px;
   border-radius: 5px;
   color: white;
+ 
 }
 .inputBtn{
   background-image: url('./assets/img/add.png');
